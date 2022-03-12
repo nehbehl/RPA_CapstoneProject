@@ -1,0 +1,153 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="NavigateAndExtractNASALaunchDetails" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="out_NASAData" Type="OutArgument(sd:DataTable)" />
+  </x:Members>
+  <mva:VisualBasic.Settings>
+    <x:Null />
+  </mva:VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>592,1892.66666666667</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>NavigateToNASALaunchPage_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="38">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>System.Activities.DynamicUpdate</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities.Models</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
+      <x:String>UiPath.Mail</x:String>
+      <x:String>UiPath.Mail.Activities.Business</x:String>
+      <x:String>UiPath.Shared.Activities.ConnectionService.Contracts</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="60">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>mscorlib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>PresentationCore</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Mail.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.ServiceModel</AssemblyReference>
+      <AssemblyReference>Microsoft.Bcl.AsyncInterfaces</AssemblyReference>
+      <AssemblyReference>System.ValueTuple</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Composition</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence sap2010:Annotation.AnnotationText="This workflow gets the URL asset from orchestrator, launches the NASA launch details page and scrapes all the launch information and saves it into a data table to pass on to further workflows. It also checks case when no launch information is available." DisplayName="NavigateToNASALaunchPage" sap:VirtualizedContainerService.HintSize="602,1828" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <Sequence.Variables>
+      <Variable x:TypeArguments="sd:DataTable" Name="outputNASA" />
+      <Variable x:TypeArguments="x:String" Name="url" />
+    </Sequence.Variables>
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <ui:GetRobotAsset TimeoutMS="{x:Null}" AssetName="URL" DisplayName="Get URL Asset" sap:VirtualizedContainerService.HintSize="560,140.666666666667" sap2010:WorkflowViewState.IdRef="GetRobotAsset_1">
+      <ui:GetRobotAsset.Value>
+        <OutArgument x:TypeArguments="x:String">[url]</OutArgument>
+      </ui:GetRobotAsset.Value>
+    </ui:GetRobotAsset>
+    <WriteLine DisplayName="Write Line - Print url" sap:VirtualizedContainerService.HintSize="560,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[url]" />
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Chrome: NASA Launch Schedule | Rocket Launches" sap:VirtualizedContainerService.HintSize="560,1357.33333333333" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="3296b8c6-7a83-4f62-9517-78a0f04cad2c" Version="V1">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do NASA Browser Launch" sap:VirtualizedContainerService.HintSize="526,1139.33333333333" sap2010:WorkflowViewState.IdRef="Sequence_2">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <uix:NGoToUrl DisplayName="Go To NASA Launch URL" sap:VirtualizedContainerService.HintSize="484,83.3333333333333" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[url]" Version="V1" />
+            <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[outputNASA]" DisplayName="Extract NASA Launch Details" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column0' Name='New column 0'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column1' Name='New column 1'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column2' Name='New column 2'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column3' Name='New column 3'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' ReferenceName='Column4' Name='New column 4 Url'&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;/row&gt;&lt;column exact='1' name='Column0' attr='text'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column1' attr='text'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column2' attr='text' name2='Column4' attr2='href'&gt;&lt;webctrl tag='div' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" ExtractSimilar="True" sap:VirtualizedContainerService.HintSize="484,158.666666666667" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="Rows" MaximumResults="0" ScopeIdentifier="3296b8c6-7a83-4f62-9517-78a0f04cad2c" Version="V1">
+              <uix:NExtractData.Target>
+                <uix:TargetAnchorable DesignTimeRectangle="29, 245, 1860, 2481" FriendlyName="'Launches and'" FullSelectorArgument="&lt;webctrl parentid='ember14' tag='DIV' /&gt;" Guid="c83bcc55-fcf5-48dc-a92e-e1dbb5bf0407" InformativeScreenshot="72bf704c0779d6987273b026fa963976.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='NASA Launch Schedule | Rocket Launches' /&gt;" SearchSteps="Selector" />
+              </uix:NExtractData.Target>
+            </uix:NExtractData>
+            <WriteLine DisplayName="Write Line - Print NASA launch details" sap:VirtualizedContainerService.HintSize="484,62.6666666666667" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[outputNASA.ToString]" />
+            <ui:LogMessage DisplayName="Log Message - print extracted rows count" sap:VirtualizedContainerService.HintSize="484,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[outputNASA.Rows.Count.ToString]" />
+            <Assign DisplayName="Assign NASA output to out variable" sap:VirtualizedContainerService.HintSize="484,62" sap2010:WorkflowViewState.IdRef="Assign_1">
+              <Assign.To>
+                <OutArgument x:TypeArguments="sd:DataTable">[out_NASAData]</OutArgument>
+              </Assign.To>
+              <Assign.Value>
+                <InArgument x:TypeArguments="sd:DataTable">[outputNASA]</InArgument>
+              </Assign.Value>
+            </Assign>
+            <If Condition="[outputNASA.Rows.Count &lt; 1]" DisplayName="If - condition check for empty data" sap:VirtualizedContainerService.HintSize="484,383.333333333333" sap2010:WorkflowViewState.IdRef="If_1">
+              <If.Then>
+                <Sequence DisplayName="Sequence - No launch info" sap:VirtualizedContainerService.HintSize="376,189.333333333333" sap2010:WorkflowViewState.IdRef="Sequence_3">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                  <ui:LogMessage DisplayName="Log Message - print no launch" sap:VirtualizedContainerService.HintSize="334,94.6666666666667" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;No launch information&quot;]" />
+                </Sequence>
+              </If.Then>
+            </If>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="-11, -11, 1942, 1030" BrowserType="Chrome" IconBase64="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" InformativeScreenshot="1e48dbba98d7796505dedb33ac6bc89f.png" Selector="&lt;html app='chrome.exe' title='NASA Launch Schedule | Rocket Launches'/&gt;" Url="[url]" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>

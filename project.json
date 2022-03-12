@@ -1,19 +1,18 @@
 {
-  "name": "PracticeProcess",
-  "description": "Practice Process",
+  "name": "PersonalUseProject",
+  "description": "A personal use project for capstone requirements of RPA developer nanodegree\r\n",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.11.4]",
     "UiPath.Mail.Activities": "[1.12.3]",
-    "UiPath.PDF.Activities": "[3.4.1]",
-    "UiPath.System.Activities": "[21.10.3]",
-    "UiPath.UIAutomation.Activities": "[21.10.4]"
+    "UiPath.System.Activities": "[21.10.4]",
+    "UiPath.UIAutomation.Activities": "[21.10.5]"
   },
   "webServices": [],
   "entitiesStores": [],
   "schemaVersion": "4.0",
-  "studioVersion": "21.10.4.0",
-  "projectVersion": "1.0.0",
+  "studioVersion": "21.10.5.0",
+  "projectVersion": "1.0.4",
   "runtimeOptions": {
     "autoDispose": false,
     "netFrameworkLazyLoading": false,
@@ -47,7 +46,7 @@
   "entryPoints": [
     {
       "filePath": "Main.xaml",
-      "uniqueId": "5df9abff-7544-4b59-9b80-6b3075e8e4da",
+      "uniqueId": "22944ce3-d735-4e04-9885-0c2a4f7e4acd",
       "input": [],
       "output": []
     }
